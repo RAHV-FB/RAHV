@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+</helmet>
+<sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+  <div role="status" style="background:#FBF9F3;border:1px solid #E2D9C8;border-radius:3px;padding:clamp(26px,4vw,40px);">
+    <div style="width:40px;height:40px;border-radius:50%;background:#6B7347;display:flex;align-items:center;justify-content:center;color:#F7F4EC;font-family:'Hanken Grotesk',sans-serif;font-size:20px;">✓</div>
+    <h3 style="font-family:'Newsreader',serif;font-weight:500;font-size:clamp(22px,2.6vw,28px);color:#22302E;margin:20px 0 10px;line-height:1.15;">Thanks — I've got your enquiry.</h3>
+    <p style="font-family:'Hanken Grotesk',sans-serif;font-size:16px;line-height:1.65;color:#59635F;margin:0 0 24px;max-width:52ch;">I'll be in touch.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;">
+      <button type="button" onClick="{{ onSchedule }}" style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#F7F4EC;background:#6B7347;border:1px solid #6B7347;border-radius:2px;padding:12px 22px;cursor:pointer;">Schedule a call</button>
+      <button type="button" onClick="{{ reset }}" style="font-family:'Hanken Grotesk',sans-serif;font-size:14px;font-weight:600;color:#22302E;background:transparent;border:1px solid rgba(34,48,46,0.3);border-radius:2px;padding:12px 22px;cursor:pointer;">Send another</button>
+    </div>
+  </div>
+</sc-if>
+<sc-if value="{{ isForm }}" hint-placeholder-val="{{ true }}">
+  <form novalidate onSubmit="{{ handleSubmit }}" style="background:#FBF9F3;border:1px solid #E2D9C8;border-radius:3px;padding:clamp(22px,3.4vw,34px);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;">
+      <div>
+        <label for="lf-name" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#59635F;margin-bottom:7px;">Name <span style="color:#B24A32;">*</span></label>
+        <input id="lf-name" name="name" type="text" autocomplete="name" value="{{ f.name }}" onChange="{{ handleChange }}" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#22302E;background:#FFFFFF;border:1px solid #D8CEBC;border-radius:2px;padding:12px 14px;box-sizing:border-box;" style-focus="border-color:#6B7347;outline:2px solid rgba(107,115,71,0.25);outline-offset:0;">
+        <sc-if value="{{ e.name }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:13px;color:#B24A32;margin-top:6px;">{{ e.name }}</span></sc-if>
+      </div>
+      <div>
+        <label for="lf-email" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#59635F;margin-bottom:7px;">Email <span style="color:#B24A32;">*</span></label>
+        <input id="lf-email" name="email" type="email" autocomplete="email" value="{{ f.email }}" onChange="{{ handleChange }}" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#22302E;background:#FFFFFF;border:1px solid #D8CEBC;border-radius:2px;padding:12px 14px;box-sizing:border-box;" style-focus="border-color:#6B7347;outline:2px solid rgba(107,115,71,0.25);">
+        <sc-if value="{{ e.email }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:13px;color:#B24A32;margin-top:6px;">{{ e.email }}</span></sc-if>
+      </div>
+      <div>
+        <label for="lf-phone" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#59635F;margin-bottom:7px;">Phone / WhatsApp <span style="color:#B24A32;">*</span></label>
+        <input id="lf-phone" name="phone" type="tel" autocomplete="tel" value="{{ f.phone }}" onChange="{{ handleChange }}" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#22302E;background:#FFFFFF;border:1px solid #D8CEBC;border-radius:2px;padding:12px 14px;box-sizing:border-box;" style-focus="border-color:#6B7347;outline:2px solid rgba(107,115,71,0.25);">
+        <sc-if value="{{ e.phone }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:13px;color:#B24A32;margin-top:6px;">{{ e.phone }}</span></sc-if>
+      </div>
+      <div>
+        <label for="lf-budget" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#59635F;margin-bottom:7px;">Property budget <span style="color:#B24A32;">*</span></label>
+        <select id="lf-budget" name="budget" value="{{ f.budget }}" onChange="{{ handleChange }}" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#22302E;background:#FFFFFF;border:1px solid #D8CEBC;border-radius:2px;padding:12px 14px;box-sizing:border-box;appearance:none;" style-focus="border-color:#6B7347;outline:2px solid rgba(107,115,71,0.25);">
+          <option value="">Select a range</option>
+          <sc-for list="{{ budgets }}" as="b" hint-placeholder-count="3"><option value="{{ b }}">{{ b }}</option></sc-for>
+        </select>
+        <sc-if value="{{ e.budget }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:13px;color:#B24A32;margin-top:6px;">{{ e.budget }}</span></sc-if>
+      </div>
+      <div>
+        <label for="lf-timeframe" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#59635F;margin-bottom:7px;">Timeframe</label>
+        <select id="lf-timeframe" name="timeframe" value="{{ f.timeframe }}" onChange="{{ handleChange }}" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#22302E;background:#FFFFFF;border:1px solid #D8CEBC;border-radius:2px;padding:12px 14px;box-sizing:border-box;appearance:none;" style-focus="border-color:#6B7347;outline:2px solid rgba(107,115,71,0.25);">
+          <option value="">No rush to say</option>
+          <sc-for list="{{ timeframes }}" as="t" hint-placeholder-count="4"><option value="{{ t }}">{{ t }}</option></sc-for>
+        </select>
+      </div>
+      <div>
+        <label for="lf-area" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#59635F;margin-bottom:7px;">Area of interest</label>
+        <select id="lf-area" name="area" value="{{ f.area }}" onChange="{{ handleChange }}" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#22302E;background:#FFFFFF;border:1px solid #D8CEBC;border-radius:2px;padding:12px 14px;box-sizing:border-box;appearance:none;" style-focus="border-color:#6B7347;outline:2px solid rgba(107,115,71,0.25);">
+          <option value="">Select an area</option>
+          <sc-for list="{{ areasList }}" as="a" hint-placeholder-count="5"><option value="{{ a }}">{{ a }}</option></sc-for>
+        </select>
+      </div>
+      <div style="grid-column:1/-1;">
+        <label for="lf-location" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#59635F;margin-bottom:7px;">Current city / country</label>
+        <input id="lf-location" name="location" type="text" autocomplete="address-level2" value="{{ f.location }}" onChange="{{ handleChange }}" placeholder="e.g. Boston, USA" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:15px;color:#22302E;background:#FFFFFF;border:1px solid #D8CEBC;border-radius:2px;padding:12px 14px;box-sizing:border-box;" style-focus="border-color:#6B7347;outline:2px solid rgba(107,115,71,0.25);">
+      </div>
+      <div style="grid-column:1/-1;">
+        <label for="lf-message" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#59635F;margin-bottom:7px;">What are you looking for?</label>
+        <textarea id="lf-message" name="message" rows="4" value="{{ f.message }}" onChange="{{ handleChange }}" placeholder="" style="width:100%;font-family:'Hanken Grotesk',sans-serif;font-size:15px;line-height:1.55;color:#22302E;background:#FFFFFF;border:1px solid #D8CEBC;border-radius:2px;padding:12px 14px;box-sizing:border-box;resize:vertical;" style-focus="border-color:#6B7347;outline:2px solid rgba(107,115,71,0.25);"></textarea>
+      </div>
+    </div>
+    <div style="display:flex;gap:11px;align-items:flex-start;margin-top:20px;">
+      <input id="lf-consent" name="consent" type="checkbox" checked="{{ f.consent }}" onChange="{{ handleChange }}" style="margin-top:3px;width:17px;height:17px;accent-color:#6B7347;flex:0 0 auto;">
+      <label for="lf-consent" style="font-family:'Hanken Grotesk',sans-serif;font-size:13.5px;line-height:1.55;color:#59635F;">I agree to be contacted about my enquiry and have read the <button type="button" onClick="{{ onPrivacy }}" style="background:none;border:none;padding:0;color:#6B7347;font:inherit;text-decoration:underline;cursor:pointer;">Privacy Policy</button>. <span style="color:#B24A32;">*</span></label>
+    </div>
+    <sc-if value="{{ e.consent }}" hint-placeholder-val="{{ false }}"><span role="alert" style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:13px;color:#B24A32;margin-top:6px;">{{ e.consent }}</span></sc-if>
+    <sc-if value="{{ e.form }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-family:'Hanken Grotesk',sans-serif;font-size:13.5px;color:#B24A32;margin-top:14px;background:rgba(178,74,50,0.08);border:1px solid rgba(178,74,50,0.25);border-radius:2px;padding:10px 12px;">{{ e.form }}</div></sc-if>
+    <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:22px;">
+      <button type="submit" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:600;color:#F7F4EC;background:#6B7347;border:1px solid #6B7347;border-radius:2px;padding:14px 28px;cursor:pointer;" style-hover="background:#5c6440;">Send enquiry</button>
+      <button type="button" onClick="{{ onSchedule }}" style="font-family:'Hanken Grotesk',sans-serif;font-size:15px;font-weight:600;color:#22302E;background:transparent;border:1px solid rgba(34,48,46,0.3);border-radius:2px;padding:14px 28px;cursor:pointer;" style-hover="border-color:#22302E;">Schedule a call</button>
+    </div>
+    <!-- TODO: LEGAL REVIEW — final wording on any onward sharing of this enquiry with a licensed local partner must match the confirmed Privacy Policy and lawful basis. -->
+  </form>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:680,&quot;height&quot;:760},&quot;onSchedule&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;},&quot;onPrivacy&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = {
+    form: { name:'', email:'', phone:'', budget:'', timeframe:'', area:'', location:'', message:'', consent:false },
+    errors: {},
+    status: 'idle'
+  };
+
+  handleChange = (ev) => {
+    const t = ev.target;
+    const value = t.type === 'checkbox' ? t.checked : t.value;
+    this.setState(s => ({
+      form: { ...s.form, [t.name]: value },
+      errors: { ...s.errors, [t.name]: undefined, form: undefined }
+    }));
+  };
+
+  handleSubmit = (ev) => {
+    ev.preventDefault();
+    const f = this.state.form;
+    const errors = {};
+    if (!f.name.trim()) errors.name = 'Please tell us your name.';
+    const email = f.email.trim();
+    if (!email) errors.email = 'Please add an email address.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'Please check this email address.';
+    if (!f.phone.trim()) errors.phone = 'Please add a phone or WhatsApp number.';
+    if (!f.budget) errors.budget = 'Please choose a budget range.';
+    if (!f.consent) errors.consent = 'Please confirm you agree to be contacted.';
+    if (Object.keys(errors).length) {
+      errors.form = 'Please check the highlighted fields.';
+      this.setState({ errors, status: 'idle' });
+      return;
+    }
+    // TODO: BACKEND — wire this submission to the CRM / email endpoint, with spam protection (e.g. hCaptcha/Turnstile),
+    // and to the licensed-partner hand-off flow disclosed in the Privacy Policy. This build only simulates success.
+    this.setState({ status: 'success', errors: {} });
+  };
+
+  reset = () => {
+    this.setState({
+      form: { name:'', email:'', phone:'', budget:'', timeframe:'', area:'', location:'', message:'', consent:false },
+      errors: {}, status: 'idle'
+    });
+  };
+
+  renderVals() {
+    return {
+      f: this.state.form,
+      e: this.state.errors,
+      isSuccess: this.state.status === 'success',
+      isForm: this.state.status !== 'success',
+      handleChange: this.handleChange,
+      handleSubmit: this.handleSubmit,
+      reset: this.reset,
+      onSchedule: this.props.onSchedule || (() => {}),
+      onPrivacy: this.props.onPrivacy || (() => {}),
+      budgets: ['€1m–€3m', '€3m–€5m', '€5m+'],
+      timeframes: ['0–3 months', '3–6 months', '6–12 months', '12+ months / exploring'],
+      areasList: ['Barcelona', 'Metropolitan Barcelona', 'Sitges / Castelldefels', 'Costa Brava', 'Not sure yet']
+    };
+  }
+}
+</script>
+</body>
+</html>
