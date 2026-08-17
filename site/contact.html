@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact — Your Home Barcelona</title>
-<meta name="description" content="Contact Steve Howard about buying a home in Barcelona. Send an enquiry or schedule a call.">
+<meta name="description" content="Contact Steve Howard about buying a home in Barcelona. Schedule a call, send an enquiry, or reach him by email.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='11'%20fill='%2322302E'/%3E%3Ctext%20x='32'%20y='41'%20font-family='Georgia,serif'%20font-size='21'%20letter-spacing='1'%20fill='%23EFEADE'%20text-anchor='middle'%3EYHB%3C/text%3E%3C/svg%3E">
-<link rel="stylesheet" href="css/style.css?v=8">
+<link rel="stylesheet" href="css/style.css?v=10">
 </head>
 <body>
 
@@ -18,112 +18,132 @@
     </a>
     <nav class="main-nav" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="buying.html">Buying in Barcelona</a>
-      <a href="areas.html">Areas</a>
       <a href="about.html">About Steve</a>
       <a href="contact.html" aria-current="page">Contact</a>
     </nav>
+    <div class="header-cta">
+      <a class="btn btn-primary" href="#call" data-track="schedule_call_click">Schedule a call</a>
+    </div>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">≡</button>
   </div>
   <div class="mobile-menu">
     <nav aria-label="Mobile">
       <a href="index.html">Home</a>
-      <a href="buying.html">Buying in Barcelona</a>
-      <a href="areas.html">Areas</a>
       <a href="about.html">About Steve</a>
       <a href="contact.html" aria-current="page">Contact</a>
     </nav>
+    <a class="btn btn-primary" href="#call" data-track="schedule_call_click">Schedule a call</a>
   </div>
 </header>
 
 <main>
 
   <section style="max-width: 1200px; margin: 0 auto; padding: clamp(36px, 5vw, 64px) 24px clamp(48px, 7vw, 88px);">
-    <h1 class="display" style="margin-bottom: 14px;">Contact</h1>
-    <p class="lede" style="margin: 0 0 clamp(28px, 4vw, 40px);"><a href="mailto:hello@yourhomebarcelona.com">hello@yourhomebarcelona.com</a> &nbsp;·&nbsp; Barcelona, Spain &nbsp;·&nbsp; English &amp; Spanish</p>
-
-    <div class="two-up">
-      <div class="option">
-        <h2 class="option-title">Send an enquiry</h2>
-        <div class="lead-form-wrap">
-          <form novalidate>
-            <div class="form-grid">
-              <div class="field" data-field="name">
-                <label for="lf-name">Name <span class="req">*</span></label>
-                <input id="lf-name" name="name" type="text" autocomplete="name">
-                <span class="error-msg" role="alert"></span>
-              </div>
-              <div class="field" data-field="email">
-                <label for="lf-email">Email <span class="req">*</span></label>
-                <input id="lf-email" name="email" type="email" autocomplete="email">
-                <span class="error-msg" role="alert"></span>
-              </div>
-              <div class="field" data-field="phone">
-                <label for="lf-phone">Phone / WhatsApp <span class="req">*</span></label>
-                <input id="lf-phone" name="phone" type="tel" autocomplete="tel">
-                <span class="error-msg" role="alert"></span>
-              </div>
-              <div class="field" data-field="budget">
-                <label for="lf-budget">Property budget <span class="req">*</span></label>
-                <select id="lf-budget" name="budget">
-                  <option value="">Select a range</option>
-                  <option>€1m–€3m</option>
-                  <option>€3m–€5m</option>
-                  <option>€5m+</option>
-                </select>
-                <span class="error-msg" role="alert"></span>
-              </div>
-              <div class="field" data-field="timeframe">
-                <label for="lf-timeframe">Timeframe</label>
-                <select id="lf-timeframe" name="timeframe">
-                  <option value="">No fixed timeframe</option>
-                  <option>0–3 months</option>
-                  <option>3–6 months</option>
-                  <option>6–12 months</option>
-                  <option>12+ months</option>
-                </select>
-              </div>
-              <div class="field" data-field="area">
-                <label for="lf-area">Area of interest</label>
-                <select id="lf-area" name="area">
-                  <option value="">Select an area</option>
-                  <option>Barcelona</option>
-                  <option>Metropolitan Barcelona</option>
-                  <option>Sitges / Castelldefels</option>
-                  <option>Costa Brava</option>
-                  <option>Not sure yet</option>
-                </select>
-              </div>
-              <div class="field full" data-field="location">
-                <label for="lf-location">Current city / country</label>
-                <input id="lf-location" name="location" type="text" placeholder="e.g. Boston, USA">
-              </div>
-              <div class="field full" data-field="message">
-                <label for="lf-message">What are you looking for?</label>
-                <textarea id="lf-message" name="message" rows="4"></textarea>
-              </div>
-            </div>
-            <div class="consent-row">
-              <input id="lf-consent" name="consent" type="checkbox">
-              <label for="lf-consent">I agree to be contacted about my enquiry and have read the <a href="legal.html">privacy policy</a>. <span class="req">*</span></label>
-            </div>
-            <span class="consent-error" role="alert">Please confirm you agree to be contacted.</span>
-            <div class="form-alert" role="alert">Please check the highlighted fields.</div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">Send enquiry</button>
-            </div>
-          </form>
-          <div class="form-success" role="status">
-            <h3>Thanks. I've got your enquiry.</h3>
-            <p>I'll get back to you.</p>
-            <button type="button" class="btn btn-ghost send-another">Send another</button>
-          </div>
+    <div class="split center" style="grid-template-columns: 0.55fr 1.45fr; margin-bottom: clamp(32px, 4vw, 48px);">
+      <div style="max-width: 260px;">
+        <div class="frame frame-45" style="background: var(--ink);">
+          <img src="assets/steve-portrait.jpeg" alt="Steve Howard">
         </div>
       </div>
-      <div class="option">
+      <div>
+        <h1 class="display">What are you looking for in Barcelona?</h1>
+      </div>
+    </div>
+
+    <div class="two-up">
+      <div class="option" id="call" style="scroll-margin-top: 80px;">
         <h2 class="option-title">Schedule a call</h2>
         <div class="booking-embed">
-          <div style="width:100%;height:100%;overflow:auto" id="cal-inline-contact"></div>
+          <div id="cal-inline-contact"></div>
+        </div>
+        <p class="small-note">If the calendar doesn't load, email <a href="mailto:desobrado@gmail.com" data-track="email_click">desobrado@gmail.com</a>.</p>
+      </div>
+
+      <div class="option" id="enquiry" style="scroll-margin-top: 80px;">
+        <h2 class="option-title">Send an enquiry</h2>
+        <div class="lead-form-wrap">
+        <form novalidate>
+          <div class="form-grid">
+            <div class="field" data-field="name">
+              <label for="lf-name">Name <span class="req">*</span></label>
+              <input id="lf-name" name="name" type="text" autocomplete="name">
+              <span class="error-msg" role="alert"></span>
+            </div>
+            <div class="field" data-field="email">
+              <label for="lf-email">Email <span class="req">*</span></label>
+              <input id="lf-email" name="email" type="email" autocomplete="email">
+              <span class="error-msg" role="alert"></span>
+            </div>
+            <div class="field" data-field="phone">
+              <label for="lf-phone">Phone / WhatsApp <span class="req">*</span></label>
+              <input id="lf-phone" name="phone" type="tel" autocomplete="tel">
+              <span class="error-msg" role="alert"></span>
+            </div>
+            <div class="field" data-field="budget">
+              <label for="lf-budget">Property budget <span class="req">*</span></label>
+              <select id="lf-budget" name="budget">
+                <option value="">Select a range</option>
+                <option>€1M–€3M</option>
+                <option>€3M–€5M</option>
+                <option>€5M+</option>
+              </select>
+              <span class="error-msg" role="alert"></span>
+            </div>
+            <div class="field" data-field="timeframe">
+              <label for="lf-timeframe">Timeframe</label>
+              <select id="lf-timeframe" name="timeframe">
+                <option value="">Select a timeframe</option>
+                <option>0–3 months</option>
+                <option>3–6 months</option>
+                <option>6–12 months</option>
+                <option>12+ months</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field" data-field="area">
+              <label for="lf-area">Area of interest</label>
+              <select id="lf-area" name="area">
+                <option value="">Select an area</option>
+                <option>Barcelona</option>
+                <option>Metropolitan Barcelona</option>
+                <option>Sitges / Castelldefels</option>
+                <option>Costa Brava</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field" data-field="purchase">
+              <label for="lf-purchase">Purchase</label>
+              <select id="lf-purchase" name="purchase">
+                <option value="">Select an option</option>
+                <option>Cash</option>
+                <option>Financing</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <div class="field" data-field="location">
+              <label for="lf-location">Current city / country</label>
+              <input id="lf-location" name="location" type="text" placeholder="e.g. Boston, USA">
+            </div>
+            <div class="field full" data-field="message">
+              <label for="lf-message">What are you looking for?</label>
+              <textarea id="lf-message" name="message" rows="4"></textarea>
+            </div>
+          </div>
+          <div class="consent-row">
+            <input id="lf-consent" name="consent" type="checkbox">
+            <label for="lf-consent">I agree to be contacted about my enquiry and have read the <a href="legal.html">privacy policy</a>. <span class="req">*</span></label>
+          </div>
+          <span class="consent-error" role="alert">Please confirm you agree to be contacted.</span>
+          <div class="form-alert" role="alert">Please check the highlighted fields.</div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Send enquiry</button>
+          </div>
+        </form>
+        <div class="form-success" role="status">
+          <h3>Thanks. Your enquiry is ready to send.</h3>
+          <p>Your email app should have opened with the enquiry addressed to me. Press send there and I'll get back to you. If it didn't open, email <a href="mailto:desobrado@gmail.com" data-track="email_click">desobrado@gmail.com</a>.</p>
+          <button type="button" class="btn btn-ghost send-another">Send another</button>
+        </div>
         </div>
       </div>
     </div>
@@ -141,11 +161,9 @@
         </div>
       </div>
       <div>
-        <h3>Explore</h3>
+        <h3>Pages</h3>
         <nav>
           <a href="index.html">Home</a>
-          <a href="buying.html">Buying in Barcelona</a>
-          <a href="areas.html">Areas</a>
           <a href="about.html">About Steve</a>
           <a href="contact.html">Contact</a>
         </nav>
@@ -153,8 +171,8 @@
       <div>
         <h3>Contact</h3>
         <div class="footer-contact">
-          <a href="mailto:hello@yourhomebarcelona.com">hello@yourhomebarcelona.com</a>
-          <a href="schedule.html">Schedule a call</a>
+          <a href="mailto:desobrado@gmail.com" data-track="email_click">desobrado@gmail.com</a>
+          <a href="#call" data-track="schedule_call_click">Schedule a call</a>
           <span>Barcelona, Spain</span>
         </div>
       </div>
@@ -166,15 +184,15 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="disclosure">Steve Howard is a former licensed real-estate agent in California and Florida and is not a licensed estate agent in Catalonia. Property searches, viewings and transactions are carried out by licensed local professionals. Nothing on this site is legal, tax, mortgage or financial advice.</p>
+      <p class="disclosure">Steve Howard formerly held real-estate licences in California and Florida and is not a licensed estate agent in Catalonia. Property brokerage and transaction work is handled by licensed local professionals. Information on this website is general and is not legal, tax, mortgage or financial advice.</p>
       <p>© 2026 Your Home Barcelona</p>
     </div>
   </div>
 </footer>
 
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=5"></script>
 
-<!-- Cal inline embed -->
+<!-- Cal inline embed code begins -->
 <script type="text/javascript">
   (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 Cal("init", "meet", {origin:"https://app.cal.com"});
@@ -189,5 +207,6 @@ Cal.config.forwardQueryParams = true;
 
   Cal.ns.meet("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#6B7347"},"dark":{"cal-brand":"#a7b083"}},"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
+<!-- Cal inline embed code ends -->
 </body>
 </html>

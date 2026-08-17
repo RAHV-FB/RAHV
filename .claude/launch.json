@@ -3,9 +3,9 @@
   "configurations": [
     {
       "name": "yhb-site",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8137", "--directory", "/Users/russell/Your Home - Barcelona/site"],
-      "port": 8137
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "exec python3 -m http.server \"$PORT\" --directory \"/Users/russell/Your Home - Barcelona/site\""],
+      "autoPort": true
     }
   ]
 }

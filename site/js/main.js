@@ -1,5 +1,19 @@
 // Your Home Barcelona
 
+const ENQUIRY_EMAIL = 'desobrado@gmail.com';
+
+// No analytics is loaded. Conversion events fire through here
+// (schedule_call_click, email_click, enquiry_started, enquiry_submitted,
+// area_cta_click) if a provider is added later.
+function track(eventName) {
+  if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: eventName });
+}
+
+document.addEventListener('click', (ev) => {
+  const el = ev.target.closest('[data-track]');
+  if (el) track(el.dataset.track);
+});
+
 // Mobile navigation
 const header = document.querySelector('.site-header');
 const toggle = document.querySelector('.nav-toggle');
@@ -10,10 +24,13 @@ if (toggle && header) {
   });
 }
 
-// Lead form
+// Enquiry form — validates, then opens the visitor's email app with the
+// enquiry addressed to Steve. Static site, no backend.
 document.querySelectorAll('.lead-form-wrap').forEach((wrap) => {
   const form = wrap.querySelector('form');
   if (!form) return;
+
+  form.addEventListener('focusin', () => track('enquiry_started'), { once: true });
 
   const setError = (name, message) => {
     const field = form.querySelector(`[data-field="${name}"]`);
@@ -70,6 +87,23 @@ document.querySelectorAll('.lead-form-wrap').forEach((wrap) => {
       return;
     }
 
+    const lines = [
+      ['Name', data.name],
+      ['Email', data.email],
+      ['Phone / WhatsApp', data.phone],
+      ['Property budget', data.budget],
+      ['Timeframe', data.timeframe],
+      ['Area of interest', data.area],
+      ['Purchase', data.purchase],
+      ['Current city / country', data.location],
+      ['What I\'m looking for', data.message],
+    ].filter(([, v]) => v && v.trim());
+
+    const body = lines.map(([k, v]) => `${k}: ${v.trim()}`).join('\n');
+    const subject = `Enquiry — ${data.name.trim()}`;
+    window.location.href = `mailto:${ENQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    track('enquiry_submitted');
     wrap.classList.add('success');
     wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
