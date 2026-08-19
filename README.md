@@ -25,15 +25,16 @@ It runs on every push that touches `site/` or the workflow itself, publishing
 only from the repository's default branch (whatever it is named), and can also
 be run manually from the Actions tab (**Run workflow**).
 
-### One-time repository setting
+### Repository settings
 
-GitHub Pages must be told to take its content from Actions rather than from a branch:
+The `Configure Pages` step runs with `enablement: true`, so it turns Pages on
+(source: **GitHub Actions**) on the first run — no manual
+**Settings → Pages** step is required. The workflow already requests the
+`pages: write` and `id-token: write` permissions this needs.
 
-**Settings → Pages → Build and deployment → Source → GitHub Actions**
-
-Until that is set, the `deploy` job fails with a "Pages site not found" style error.
-Nothing else needs configuring — the workflow already requests the
-`pages: write` and `id-token: write` permissions it needs.
+Note that GitHub Pages on a **private** repository requires a paid plan
+(Pro, Team, or Enterprise). On a free plan, make the repository public or the
+deploy will be rejected.
 
 ## Local preview
 
