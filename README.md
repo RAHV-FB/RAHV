@@ -21,8 +21,9 @@ site/                  # everything published to GitHub Pages
 ## Deployment
 
 `.github/workflows/pages.yml` uploads `site/` as a Pages artifact and deploys it.
-It runs on every push to `main` that touches `site/` or the workflow itself, and
-can also be run manually from the Actions tab (**Run workflow**).
+It runs on every push that touches `site/` or the workflow itself, publishing
+only from the repository's default branch (whatever it is named), and can also
+be run manually from the Actions tab (**Run workflow**).
 
 ### One-time repository setting
 
@@ -43,7 +44,7 @@ python3 -m http.server 8000 --directory site
 
 ## Editing
 
-Edit the files under `site/` and push to `main`; the workflow republishes.
+Edit the files under `site/` and push to the default branch; the workflow republishes.
 Asset paths in `index.html` are relative (`./assets/...`) so the site works
 both at `/RAHV/` and at a domain root.
 
